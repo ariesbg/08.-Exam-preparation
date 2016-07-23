@@ -1,0 +1,67 @@
+
+using System;
+using System.Globalization;
+using System.Threading;
+
+class Program
+{
+    static void Main()
+    {
+        //•	The machine has enough coins in its trays to give the change.
+        // •	The machine waits for the developer to put more coins (in order to reach the amount A).
+        //  •	The machine does not have enough coins to give the change.
+
+        //Input
+        //On the first five lines there will be the numbers N1, N2, …, N5, each on its own line. #
+        //On the sixth line there will be the amount A the developer has put in the machine. #
+        //On the seventh line there will be the price P of the selected drink. #
+
+        //Output
+        //The output data should be printed on the console.
+        //On the only output line your program should print one of the following words and prices, separated by a single space:
+        //•	If the developer has given enough money and the machine can give change (or there is no change), print Yes along with the money left in the machine’s trays after giving change.
+        //•	If the price of the drink is more than the amount put by the developer, print More along with the additional amount of money needed.
+        //•	If the developer has given enough money but the machine cannot give change, print No along with the amount of insufficient money in the machine’s trays (e. g. if the machine has 1 BGN totally in its trays but has to give 2.50 BGN, the amount of insufficient money is 1.50 BGN).
+
+        // Constraints
+        // •	The numbers N1, N2, …, N5 will always be integers in the range [0; 10000] #
+        // •	The numbers A and P will always be valid prices (with exactly two digits after the decimal point)
+        //in the range [0.05; 1000.00] (yes, some drinks can be expensive :)) #
+        // •	Allowed working time for your program: 0.1 seconds
+
+
+        int n1 = int.Parse(Console.ReadLine());
+        int n2 = int.Parse(Console.ReadLine());
+        int n3 = int.Parse(Console.ReadLine());
+        int n4 = int.Parse(Console.ReadLine());
+        int n5 = int.Parse(Console.ReadLine());
+
+        double a = double.Parse(Console.ReadLine()); //amount of money the developer has put into the machine
+
+        double p = double.Parse(Console.ReadLine()); //price
+
+        double moreResult = p - a;
+        double amountInTheMachine = n1 * 0.05 + n2 * 0.10 + n3 * 0.20 + n4 * 0.50 + n5 * 1.00;
+        double yesResult = a - p;
+
+        if (a >= p)
+        {
+            Console.WriteLine("{0:F2}", yesResult);
+            if (yesResult <= amountInTheMachine)
+            {
+                Console.WriteLine("Yes {0:F2}", amountInTheMachine - yesResult);
+            }
+            else
+            {
+                Console.WriteLine("No {0:F2}", yesResult - amountInTheMachine);
+            }
+        }
+
+        else
+        {
+            Console.WriteLine("More {0:F2}", moreResult);
+        }
+
+    }
+}
+
