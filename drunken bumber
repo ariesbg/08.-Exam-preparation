@@ -1,0 +1,67 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Write rounds btw 1 <= N <= 100: "); //The number or rounds N is given on the first input line.
+        int N = int.Parse(Console.ReadLine());
+        int m = 0; // dranks beer from mitko
+        int v = 0; //dranks beer from vladko
+        
+        for (int i = 1; i <= N; i++)
+        {
+            int roundInfo = int.Parse(Console.ReadLine()); //enter the numbers of drank beer
+            roundInfo = Math.Abs(roundInfo);
+
+            //checking how long is the drunkenNum
+            int digits = 0;
+            long tempDigitInfo = roundInfo;
+            while (tempDigitInfo > 0)
+            {
+                tempDigitInfo /= 10;
+                digits++;
+            }
+
+            //checking if drunkenNum has odd or even count of numbers
+            //by even number
+         
+                for (int j = 0; j < digits / 2; j++)
+                {
+                    v += roundInfo % 10; // vzemame poslednata cifra ot chisloto, vzemame ostatyka pri delene na 10
+                    roundInfo /= 10; // namalqvame cqloto chislo s edna cifra i pak vzemame (%10) poslednata cifra
+                }
+
+                
+
+                if (digits % 2 == 1) // by odd number
+                {
+                    int middle = roundInfo % 10;
+                v += middle;
+                m += middle;
+                roundInfo /= 10;
+                }
+
+                for (int j = 0; j < digits / 2; j++)
+                {
+                    m += roundInfo % 10; 
+                    roundInfo /= 10; 
+                }  
+                }
+    
+
+        if (m > v)
+        {
+            Console.WriteLine("M {0}", m - v);
+        }
+        else if (m < v)
+        {
+            Console.WriteLine("V {0}", v - m);
+        }
+        else
+        {
+            Console.WriteLine("No {0}", m + v); // if they are drunk the same quantity of beer, print the sum of the drank beer together
+        }
+        
+    }
+}
