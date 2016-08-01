@@ -4,7 +4,7 @@ class Program
 {
     static void Main()
     {
-        Console.Write("Write rounds btw 1 <= N <= 100: "); //The number or rounds N is given on the first input line.
+        Console.Write("Write rounds btw 1 <= N <= 100: "); 
         int N = int.Parse(Console.ReadLine());
         int m = 0; // dranks beer from mitko
         int v = 0; //dranks beer from vladko
@@ -28,8 +28,8 @@ class Program
          
                 for (int j = 0; j < digits / 2; j++)
                 {
-                    v += roundInfo % 10; // vzemame poslednata cifra ot chisloto, vzemame ostatyka pri delene na 10
-                    roundInfo /= 10; // namalqvame cqloto chislo s edna cifra i pak vzemame (%10) poslednata cifra
+                    v += roundInfo % 10; 
+                    roundInfo /= 10; 
                 }
 
                 
@@ -60,7 +60,7 @@ class Program
         }
         else
         {
-            Console.WriteLine("No {0}", m + v); // if they are drunk the same quantity of beer, print the sum of the drank beer together
+            Console.WriteLine("No {0}", m + v); 
         }
         
     }
