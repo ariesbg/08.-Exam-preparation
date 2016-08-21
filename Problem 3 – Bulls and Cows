@@ -1,0 +1,196 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int guessNum = int.Parse(Console.ReadLine());
+        int bulls = int.Parse(Console.ReadLine());
+        int cows = int.Parse(Console.ReadLine());
+        bool foundNum = false;
+
+        for (int i = 1000; i <= 9999; i++)
+        {
+            int currentNum = i;
+            int currentBulls = 0; // give an initial value
+            int currentCows = 0;
+
+
+            int currentD = currentNum % 10;
+            currentNum /= 10;
+            int currentC = currentNum % 10;
+            currentNum /= 10;
+            int currentB = currentNum % 10;
+            currentNum /= 10;
+            int currentA = currentNum % 10;
+
+            if (currentA == 0 || currentB == 0 || currentC == 0 || currentD == 0) // checking if the ciphers heaving value 0;
+            {
+                continue;
+            }
+
+
+            int tempGuessNum = guessNum;
+            int guessNumD = tempGuessNum % 10;
+            tempGuessNum /= 10;
+            int guessNumC = tempGuessNum % 10;
+            tempGuessNum /= 10;
+            int guessNumB = tempGuessNum % 10;
+            tempGuessNum /= 10;
+            int guessNumA = tempGuessNum % 10;
+
+            // checking for bulls
+            #region bulls
+
+            if (currentA == guessNumA)
+            {
+                currentBulls++;
+                currentA = -1;
+                guessNumA = -2;
+            }
+
+            if (currentB == guessNumB)
+            {
+                currentBulls++;
+                currentB = -1;
+                guessNumB = -2;
+            }
+
+            if (currentC == guessNumC)
+            {
+                currentBulls++;
+                currentC = -1;
+                guessNumC = -2;
+            }
+
+
+            if (currentD == guessNumD)
+            {
+                currentBulls++;
+                currentD = -1;
+                guessNumD = -2;
+            }
+            #endregion bulls
+
+            //checking for cows
+            #region cowsCurrentA
+
+            if (currentA == guessNumB)
+            {
+                currentCows++;
+                currentA = -1;
+                guessNumB = -2;
+            }
+
+
+            if (currentA == guessNumC)
+            {
+                currentCows++;
+                currentA = -1;
+                guessNumC = -2;
+            }
+
+            if (currentA == guessNumD)
+            {
+                currentCows++;
+                currentA = -1;
+                guessNumD = -2;
+            }
+
+            #endregion cowsCurrentA
+
+            #region cowsCurrentB
+
+            if (currentB == guessNumA)
+            {
+                currentCows++;
+                currentB = -1;
+                guessNumA = -2;
+            }
+
+
+            if (currentB == guessNumC)
+            {
+                currentCows++;
+                currentB = -1;
+                guessNumC = -2;
+            }
+
+            if (currentB == guessNumD)
+            {
+                currentCows++;
+                currentB = -1;
+                guessNumD = -2;
+            }
+
+            #endregion cowsCurrentB
+
+            #region cowsCurrentC
+
+            if (currentC == guessNumA)
+            {
+                currentCows++;
+                currentC = -1;
+                guessNumA = -2;
+            }
+
+
+            if (currentC == guessNumB)
+            {
+                currentCows++;
+                currentC = -1;
+                guessNumB = -2;
+            }
+
+            if (currentC == guessNumD)
+            {
+                currentCows++;
+                currentC = -1;
+                guessNumD = -2;
+            }
+
+            #endregion cowsCurrentC
+
+            #region cowsCurrentD
+
+            if (currentD == guessNumA)
+            {
+                currentCows++;
+                currentD = -1;
+                guessNumA = -2;
+            }
+
+
+            if (currentD == guessNumC)
+            {
+                currentCows++;
+                currentD = -1;
+                guessNumC = -2;
+            }
+
+            if (currentD == guessNumB)
+            {
+                currentCows++;
+                currentD = -1;
+                guessNumB = -2;
+            }
+
+            #endregion cowsCurrentD
+
+            if (currentBulls == bulls && currentCows == cows)
+            {
+                foundNum = true;
+                Console.Write("{0} ", i);
+            }
+        }
+        if (!foundNum)
+        {
+            Console.WriteLine("No");
+        }
+        else
+        {
+            Console.WriteLine();
+        }
+    }
+}
+
