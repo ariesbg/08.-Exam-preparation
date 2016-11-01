@@ -1,0 +1,56 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int height = int.Parse(Console.ReadLine()); //positive number between 2 and 39 inclusive
+        int rowToHaveDash = 2; // it is begin from second row
+        int update = 2;
+
+        //link part
+        for (int i = 0; i < height; i++)
+        {
+            int middleCharacter = '.';
+
+            if (i == rowToHaveDash)
+               {
+                  middleCharacter = '-';
+                  rowToHaveDash += update;
+                  ++update;
+                }
+           
+            for (int j = 0; j < height - (i + 1); j++)
+            {
+                Console.Write(".");
+                
+            }
+             Console.Write("/");
+
+            // zapylvaneto
+             for (int k = 0; k < i * 2; k++)
+             {
+                 
+                 Console.Write(".");
+
+             }
+             Console.Write("\\");
+
+             for (int j = 0; j < height - (i + 1); j++)
+             {
+                 Console.Write('.');
+             }
+             Console.WriteLine();
+            
+        }
+        
+      
+
+        //..../\....
+        //.../--\...
+        //../....\..
+        //./------\.
+       ////........\
+    }
+}
+
