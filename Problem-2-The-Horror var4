@@ -1,0 +1,28 @@
+using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            string number = Console.ReadLine();
+            int sum = 0;
+            int amountOfEvenNumbers = 0;
+            int counter = 0;
+
+
+            foreach (var item in number)
+            {
+                if (counter % 2 == 0) //dali sme na chetna pozicia
+                {
+                    if (Char.IsDigit(item))
+                    {
+                        amountOfEvenNumbers++;
+                        sum += item - '0'; // prevra6tame item-a v chislo
+                    }//proverqvame dali simvolyt e chislo                    
+                }
+                counter++;
+            }
+            Console.WriteLine( "{0} {1}", amountOfEvenNumbers, sum);
+        }
+    }
+
